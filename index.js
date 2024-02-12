@@ -9,21 +9,16 @@ app.get('/insta', async (req, res) => {
   try {
     const userUrl = req.query.url;
 
-    
     const options = {
       method: 'GET',
-      url: 'https://instagram-post-and-reels-downloader.p.rapidapi.com/insta/',
-      params: { url: userUrl },
-      headers: {
-        'X-RapidAPI-Key': 'b38444b5b7mshc6ce6bcd5c9e446p154fa1jsn7bbcfb025b3b',
-        'X-RapidAPI-Host': 'instagram-post-and-reels-downloader.p.rapidapi.com'
-      }
+      url: 'https://tools.betabotz.eu.org/tools/instagramdl',
+      params: { url: userUrl }
     };
 
     const response = await axios.request(options);
-    const url = response.data.detail.data.items[0].urls[0].urlDownloadable;
+    const result = response.data.result[0];
+    const url = result._url;
 
-  
     res.json({ url });
   } catch (error) {
     console.error(error);
